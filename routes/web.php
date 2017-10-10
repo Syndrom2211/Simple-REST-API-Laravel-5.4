@@ -1,6 +1,7 @@
 <?php
-Route::get('/', 'KecamatanController@nampilkeun_kabeh');
-Route::get('/{id}', 'KecamatanController@nampilkeun_ku_id');
-Route::get('/t', 'KecamatanController@nambah_data');
-Route::get('/d/{id}', 'KecamatanController@ngahapus_data');
-Route::get('/u/{id}', 'KecamatanController@ngubah_data');
+Route::GET('/', 'KecamatanController@nampilkeun_kabeh');
+Route::GET('/{id}', 'KecamatanController@nampilkeun_ku_id');
+Route::GET('/t/baru', 'KecamatanController@tampilan_tambah');
+Route::POST('/t', 'KecamatanController@nambah_data');
+Route::DELETE('/d/{id}', 'KecamatanController@ngahapus_data');
+Route::PUT('/u/{id}', 'KecamatanController@ngubah_data');
