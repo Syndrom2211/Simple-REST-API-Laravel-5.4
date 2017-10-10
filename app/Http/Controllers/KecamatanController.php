@@ -22,16 +22,17 @@ class KecamatanController extends Controller
       return response()->json($kecamatan);
     }
 
-    public function nambah_data(){
+    public function tampilan_tambah(){
+      return view("contoh_tambah");
+    }
+
+    public function nambah_data(Request $request){
       $kecamatan = new Kecamatan;
 
-      //Data
-      $data_satu = 31;
-      $data_dua  = "Malangbong";
-
-      $kecamatan->id_kecamatan = $data_satu;
-      $kecamatan->kecamatan = $data_dua;
+      $kecamatan->id_kecamatan = $request->id_kecamatan;
+      $kecamatan->kecamatan    = $request->kecamatan;
       $status = $kecamatan->save();
+
       if (!$status) {
         return response()->json("Data na geus ayaan mereun");
       }
@@ -49,12 +50,13 @@ class KecamatanController extends Controller
       return response()->json("Alus.. data na geus di hapus, sok cek");
     }
 
-    public function ngubah_data($id){
+    public function ngubah_data(Request $request, $id){
       $kecamatan = Kecamatan::find($id);
+
       if(!is_null($kecamatan)){
-        $data_kecamatan = "Banjaran";
         $kecamatan->kecamatan = $data_kecamatan;
       }
+
       $status = $kecamatan->save();
       if (!$status) {
         return response()->json("Gagal ahk.. id na eweuh meren");
